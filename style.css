@@ -25,56 +25,14 @@ body {
 
   [class*="col-"] {
     float: left;
-    /* padding: 15px; */
-    /* border: 1px solid red; */
-  }
-
-  .col-1 {
-    width: 8.33%;
-  }
-
-  .col-2 {
-    width: 16.66%;
-  }
-
-  .col-3 {
-    width: 25%;
   }
 
   .col-4 {
     width: 35%;
   }
 
-  .col-5 {
-    width: 41.66%;
-  }
-
-  .col-6 {
-    width: 50%;
-  }
-
-  .col-7 {
-    width: 58.33%;
-  }
-
   .col-8 {
     width: 65%;
-  }
-
-  .col-9 {
-    width: 75%;
-  }
-
-  .col-10 {
-    width: 83.33%;
-  }
-
-  .col-11 {
-    width: 91.66%;
-  }
-
-  .col-12 {
-    width: 100%;
   }
 
   h1 {
@@ -129,7 +87,8 @@ body {
   .topMenu {
     position: absolute;
     top: 100px;
-    right: 100px;
+    /* right: 100px; */
+    left: 310px;
   }
 
   .links {
@@ -142,13 +101,13 @@ body {
 
   .info {
     position: absolute;
-    top: 374px;
+    top: 34vh;
     left: 20%;
   }
 
   .emailInput {
     position: absolute;
-    top: 539px;
+    top: 50vh;
     left: 15%;
     width: 100%;
   }
@@ -210,7 +169,7 @@ body {
 
   .tos {
     position: absolute;
-    top: 662px;
+    top: 61vh;
     left: 20%;
   }
 
@@ -291,18 +250,16 @@ body {
   #line {
     position: absolute;
     width: 60%;
-    top: 740px;
+    top: 68vh;
     left: 50%;
     transform: translate(-50%);
-    /* left: 140px; */
-    /* margin-top: 50px; */
     border: none;
     border-top: 1px solid #E3E3E4;
   }
 
   .socialIcons {
     position: absolute;
-    top: 791px;
+    top: 73vh;
     left: 50%;
     transform: translate(-50%);
   }
@@ -314,6 +271,7 @@ body {
     text-align: center;
     text-decoration: none;
     margin-left: 20px;
+    margin-bottom: 10px;
     border-radius: 50%;
     border: 2px solid #e3e3e4;
   }
@@ -441,19 +399,18 @@ body {
   }
 
   .bg {
-    background-image: url(../Images/image_summer.png);
+    background-image: url(Images/image_summer.png);
     position: absolute;
     width: 100%;
     height: 100vh;
     object-fit: cover;
-    /* height: 746px; */
     top: 66px;
     z-index: -1;
   }
 
   .emailInput {
     position: absolute;
-    top: 166px;
+    top: 146px;
     left: 20px;
   }
 
@@ -522,7 +479,7 @@ body {
     justify-content: center;
     align-items: center;
     position: absolute;
-    top: 246px;
+    top: 226px;
     left: 20px;
   }
 
@@ -574,14 +531,33 @@ body {
 
   #tosText {
     position: absolute;
-    top: -15px;
+    top: 0;
     left: 41px;
     width: 254px;
   }
 
+  #successImage{
+    position: absolute;
+    top: 30px;
+    left: 20px;
+  }
+
+  #successHeader{
+    position: absolute;
+    top: 139px;
+    left: 20px;
+  }
+
+  #successPrgrph{
+    position: absolute;
+    top: 183px;
+    left: 20px;
+    margin: 0;
+  }
+
   #line {
     position: absolute;
-    top: 294px;
+    top: 274px;
     left: 20px;
     width: 295px;
     border: none;
@@ -590,7 +566,7 @@ body {
 
   .socialIcons {
     position: absolute;
-    top: 315px;
+    top: 295px;
     right: 48px;
     width: auto;
     height: 46px;
