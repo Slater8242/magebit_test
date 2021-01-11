@@ -35,7 +35,7 @@
             <!-- Top Bar menu -->
             <div class="topMenu">
               <a class="links" href="#about">About</a>
-              <a class="links" href="#howItWorks">How it works</a>
+              <a class="links" href="#howItWorks" style="white-space: nowrap;">How it works</a>
               <a class="links" href="#contact">Contact</a>
             </div>
         </div>
