@@ -1,63 +1,63 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <title>Column Sorting using PHP and MySQL - ItSolutionStuff.com</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css" />
-</head>
-<body>
- 
-<div class="container">
-  <h1>Column Sorting using PHP and MySQL - ItSolutionStuff.com</h1>
 <?php
-     
-    $hostName = "localhost";
-    $username = "root";
-    $password = "";
-    $dbname = "magebit_task";
+include "dbconnection.php";
+$dbConn = new dbconnection();
+
+/* Все варианты сортировки */
+$sort_list = array(
+	'time_asc'   => 'time',
+	'time_desc'  => 'time DESC',
+	'email_asc'  => 'email',
+	'email_desc' => 'email DESC',
+	'id_asc'   => 'id',
+	'id_desc'  => 'id DESC'
+);
  
-    $mysqli = new mysqli($hostName, $username, $password, $dbname);
+/* Проверка GET-переменной */
+$sort = @$_GET['sort'];
+if (array_key_exists($sort, $sort_list)) {
+	$sort_sql = $sort_list[$sort];
+} else {
+	$sort_sql = reset($sort_list);
+}
  
-    $orderBy = !empty($_GET["orderby"]) ? $_GET["orderby"] : "name";
-    $order = !empty($_GET["order"]) ? $_GET["order"] : "asc";
+/* Запрос в БД */
+$users = $dbConn->connect()->prepare("SELECT * FROM subscribers ORDER BY {$sort_sql}");
+$users->execute();
+$list = $users->fetchAll(PDO::FETCH_ASSOC);
  
-    $sql = "SELECT * FROM subscribers ORDER BY " . $orderBy . " " . $order;
-  
-    $res = $mysqli->query($sql);
-  
-    $nameOrder = "asc";
-    $codeOrder = "asc";
-  
-    if($orderBy == "email" && $order == "asc") {
-      $nameOrder = "desc";
-    }
-    if($orderBy == "time" && $order == "asc") {
-      $codeOrder = "desc";
-    }
+/* Функция вывода ссылок */
+function sort_link_th($title, $a, $b) {
+	$sort = @$_GET['sort'];
+ 
+	if ($sort == $a) {
+		return '<a class="active" href="?sort=' . $b . '">' . $title . ' <i>▲</i></a>';
+	} elseif ($sort == $b) {
+		return '<a class="active" href="?sort=' . $a . '">' . $title . ' <i>▼</i></a>';  
+	} else {
+		return '<a href="?sort=' . $a . '">' . $title . '</a>';  
+	}
+}
 ?>
-<table class="table table-bordered">
-  <thead>
-    <tr>
-      <th><a href="?orderby=name&order=<?php echo $nameOrder; ?>">Name</a></th>
-      <th><a href="?orderby=code&order=<?php echo $codeOrder; ?>">Code</a></th>
-    </tr>
-  </thead>
-  <tbody>
-  
-    <?php
-    while($row = mysqli_fetch_assoc($res)){
-    ?>
-      <tr>
-        <td><?php echo $row['email']; ?></td>
-        <td><?php echo $row['time']; ?></td>
-      </tr>
-    <?php
-    }
-    ?>
-  
-  </tbody>
+<style>
+  tr,th,td{
+    border: 1px solid black;
+  }
+</style>
+<table>
+	<thead>
+		<tr>
+			<th><?php echo sort_link_th('Id', 'id_asc', 'id_desc'); ?></th>
+			<th><?php echo sort_link_th('Email', 'email_asc', 'email_desc'); ?></th>
+			<th><?php echo sort_link_th('Time', 'time_asc', 'time_desc'); ?></th>
+		</tr>
+	</thead>
+	<tbody>
+		<?php foreach ($list as $row): ?>
+		<tr>
+			<td><?php echo $row['id']; ?></td>
+			<td><?php echo $row['email']; ?></td>
+			<td><?php echo $row['time']; ?></td>
+		</tr>
+		<?php endforeach; ?>    
+	</tbody>
 </table>
-  
-</div>
-  
-</body>
-</html>
