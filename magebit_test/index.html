@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>pineapple</title>
+	<link href="style.css" rel="stylesheet" type="text/css" />
+	<link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p"
+	 crossorigin="anonymous" />
+</head>
+
+<body>
+	<div class="row">
+		<div class="base col-4">
+			<div class="topBar">
+				<div class="logo">
+					<img id="logoImage" src="Images/logo.png" alt="logo">
+              <a href="#topBar"><p id="logoName">pineapple.</p></a>
+          </div>
+
+            <div class="topMenu">
+              <a class="links" href="#about">About</a>
+              <a class="links" href="#howItWorks" style="white-space: nowrap;">How it works</a>
+              <a class="links" href="#contact">Contact</a>
+            </div>
+        </div>
+
+          <div class="content">
+            <div class="info">
+              <h1 style="margin:0; margin-bottom:7.5px;">Subscribe to newsletter</h1>
+              <p style="margin:0; margin-bottom:7.5px; width:80%;">Subscribe to our newsletter and get 10% discount on pineapple glasses.</p>
+            </div>
+
+            <div class="emailInput">
+              <form id="emailForm">
+                <input id="emailText" type="email" placeholder="Type your email address here…" onkeyup="validation()">
+                <button id="emailSubmit" type="button" ><i class="fal fa-long-arrow-right"></i></button>
+                <p id="emailMessage"></p>
+              </form>
+            </div>
+
+            <div class="tos">
+              <label class="checkboxLabel">
+                <input type="checkbox" name="tos" id="checkbox" onclick="validation()">
+                <span id="tosCheckbox"></span>
+              </label>
+
+              <p id="tosText">I agree to <span style="text-decoration: underline; color: black;"><strong>terms of service</strong></span></p>
+            </div>
+            
+            <hr id="line">
+
+            <div class="socialIcons">
+              <a href="#"><i class="fab fa-facebook-f icon"></i></a>
+              <a href="#"><i class="fab fa-instagram icon"></i></a>
+              <a href="#"><i class="fab fa-twitter icon"></i></a>
+              <a href="#"><i class="fab fa-youtube icon"></i></a>
+            </div>
+          </div>
+      </div>
+    <div class="col-8 bg">
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>
